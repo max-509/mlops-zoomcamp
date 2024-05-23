@@ -1,0 +1,47 @@
+{
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        }
+    },
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        "notebook.source.fixAll": "explicit",
+        "notebook.source.organizeImports": "explicit"
+    },
+    "notebook.formatOnCellExecution": true,
+    "editor.defaultFoldingRangeProvider": "charliermarsh.ruff",
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "ruff.format.args": [
+        "--config=pyproject.toml"
+    ],
+    "ruff.lint.args": [
+        "--config=pyproject.toml"
+    ],
+    "ruff.lint.run": "onSave",
+    "[yaml]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[jsonc]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[toml]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
+    },
+    "snakefmt.args": [
+        "--config",
+        "pyproject.toml"
+    ],
+    "[snakemake]": {
+        "editor.defaultFormatter": "tfehlmann.snakefmt"
+    },
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    }
+}
