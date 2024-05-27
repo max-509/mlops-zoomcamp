@@ -1,5 +1,6 @@
 import os
 import pickle
+
 import click
 import mlflow
 import numpy as np
@@ -34,11 +35,16 @@ def run_optimization(data_path: str, num_trials: int):
     X_val, y_val = load_pickle(os.path.join(data_path, "val.pkl"))
 
     def objective(params):
+        
+        with mlflow.start_run():
+            mlflow.log_params(params=params)
 
-        rf = RandomForestRegressor(**params)
-        rf.fit(X_train, y_train)
-        y_pred = rf.predict(X_val)
-        rmse = mean_squared_error(y_val, y_pred, squared=False)
+            rf = RandomForestRegressor(**params)
+            rf.fit(X_train, y_train)
+            y_pred = rf.predict(X_val)
+            rmse = mean_squared_error(y_val, y_pred, squared=False)
+
+            mlflow.log_metric("rmse", rmse)
 
         return {'loss': rmse, 'status': STATUS_OK}
 
@@ -62,4 +68,5 @@ def run_optimization(data_path: str, num_trials: int):
 
 
 if __name__ == '__main__':
+    mlflow.set_tracking_uri("http://127.0.0.1:5000")
     run_optimization()
